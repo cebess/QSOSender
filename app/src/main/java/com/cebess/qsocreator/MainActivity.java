@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
@@ -29,16 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Declare the User Interface elements
     EditText generatedQSOEditText;
+    EditText XmitSpeededitText;
     Button generateButton;
+
+    int XmitSpeed = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RandomQSO myQSO;
 
         // Define the graphic elements
         generatedQSOEditText = (EditText)findViewById(R.id.generatedQSOEditText);
+        XmitSpeededitText = (EditText)findViewById(R.id.XmitSpeededitText);
         generateButton = (Button)findViewById(R.id.generateButton);
 
         //install listeners
@@ -48,10 +52,17 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         try {
-            myQSO = new RandomQSO();
-            String QSOString = myQSO.getQSO(15);
-            generatedQSOEditText.setText(QSOString);
-
+            XmitSpeed = Integer.parseInt(XmitSpeededitText.getText().toString());
+            if (XmitSpeed < 5 || XmitSpeed > 50) {
+                //display in short period of time
+                Toast.makeText(getApplicationContext(), "The transmit speed must be between 5 and 50, inclusive.", Toast.LENGTH_SHORT).show();
+                XmitSpeed = 5;
+                XmitSpeededitText.setText("5");
+            } else {
+                RandomQSO myQSO = new RandomQSO();
+                String QSOString = myQSO.getQSO(XmitSpeed);
+                generatedQSOEditText.setText(QSOString);
+            }
         } catch (IOException e) {
             Log.e(MainActivity.ProjectName,"IO exception: " + e.getMessage());
             finish();
@@ -65,10 +76,17 @@ public class MainActivity extends AppCompatActivity {
     private OnClickListener btnConnectListener = new OnClickListener() {
         public void onClick(View v){
             try {
-                RandomQSO myQSO = new RandomQSO();
-                String QSOString = myQSO.getQSO(15);
-                generatedQSOEditText.setText(QSOString);
-
+                XmitSpeed = Integer.parseInt(XmitSpeededitText.getText().toString());
+                if (XmitSpeed < 5 || XmitSpeed > 50) {
+                    //display in short period of time
+                    Toast.makeText(getApplicationContext(), "The transmit speed must be between 5 and 50, inclusive.", Toast.LENGTH_SHORT).show();
+                    XmitSpeed = 5;
+                    XmitSpeededitText.setText("5");
+                } else {
+                    RandomQSO myQSO = new RandomQSO();
+                    String QSOString = myQSO.getQSO(XmitSpeed);
+                    generatedQSOEditText.setText(QSOString);
+                }
             } catch (IOException e) {
                 Log.e(MainActivity.ProjectName,"IO exception: " + e.getMessage());
                 finish();

@@ -123,11 +123,11 @@ public class RandomQSO extends RandomSentence
                     + "<Letters> A | B | C | D | E | F | G | H | I | J | K | L"
                     + " | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z\n"
                     + "<LicenseClass>"  /* These strings will be used to generate the license class */
-                    +   " [2] "     + noviceLicense
+                    +   noviceLicense
                     + " | [2] "     + techLicense
                     + " | [4] "     + generalLicense
                     + " | "         + advancedLicense
-                    + " | "         + extraLicense
+                    + " | [3]"         + extraLicense
                     + "\n"
                     + "<City> Aiea | Alexander | Asbury | Baker | Beckley | Bedford"
                     + " | Berkeley | Brunswick | Brunsville | Chicago | Cambridge"
@@ -181,14 +181,14 @@ public class RandomQSO extends RandomSentence
                     + " | Must QRT, tsunami sirens sounding."
                     + " | Must QRT to hear news about approaching hurricane."
                     + " | Must QRT to check email."
-                    + " | Must QRT, weather radio warbling."
+                    + " | Must QRT, weather radio just went off."
                     + " | [5] Must QRT for sked with <Someone>."
                     + " | Must QRT <Someone> is at the front door."
                     + " | QRM I cant make you out of the other signals | QRM? the band is crowded"
                     + " | QRN I cant pull you out of the noise | QRN? the band is noisy here"
                     + " | QSB the band is a bit unstable | QSB? band seems to be changing"
                     + " | QRS pse I cant copy that fast | QRS? I can slow down"
-                    + " | QSY? there is QRM on this freq | QSK? in case I neeed to interupt you | QRX? so we can work again | QTH? | QTR? My clock is broken"
+                    + " | QSY? there is QRM on this freq | QSK? in case I need to interupt you | QRX? so we can work again | QTH? | QTR? My clock is broken"
                     + " | What is your QTH?\n"
                     + "<Someone> my uncle | my brother | my sister | my mom\n"
                     + "<States> Alabama | Alaska | Arizona | Arkansas | California"
@@ -294,6 +294,7 @@ public class RandomQSO extends RandomSentence
                     + "\n"
                     + "<RSTDigits> [25] 5<5To9><5To9> | 478 | 354 | 248 | 126\n"
                     + "<5To9> 5 | 6 | 7 | 8 | 9\n"
+                    + "<1To3> | 1 | 2 | 3\n"
     /* Here are some larger chunks */
                     + "<MyThanks> Thanks for your call. | Tnx for ur call. | Tnx for the call OM."
                     + " | Thanks for the call. | Thanks <Name> for the call.\n"
@@ -323,9 +324,9 @@ public class RandomQSO extends RandomSentence
                     + " | It is <Weather> here <Wind>"
                     + " | It is <Weather> here\n"
                     + "<WeatherName> Weather | WX\n"
-                    + "<Wind> wind is <Digits> from the <Direction>\n"
+                    + "<Wind> wind is <1To3><Digits> mph from the <Direction>\n"
                     + "<Direction> North | South | East | West | NNW | SSE | NNE } SSW\n"
-                    + "<Temperature> <1To8><Digits> <TempUnits>\n"
+                    + "<Temperature> <1To3><Digits> <TempUnits>\n"
                     + "<TempUnits> F | C |\n"
                     + "<CityState> <City>, <States>\n"
                     + "<MyLocation> location is <CityState>."
@@ -335,13 +336,13 @@ public class RandomQSO extends RandomSentence
                     + " | Rig is <Transceiver> running <Power> watts, antenna is a <Antenna>."
                     + " | My rig is <Transceiver>. It runs <Power> watts into a <Antenna>."
                     +           " My antenna is up <UpFeet> feet."
-                    + " | Rig is <Transceiver> running <Power> watts into a <Antenna> up <UpFeet>.\n"
+                    + " | Rig is <Transceiver> running <Power> watts into a <Antenna> up <UpFeet> feet.\n"
                     + "<YourRST> <Your> <Signal> <is> <RST> <RST>.\n"
                     + "<is> is |\n"
                     + "<Your> [2] Your | [2] UR |\n"
                     + "<Signal> RST | Signal\n"
                     + "<CallSigns> <Receiver> de <Sender>\n"
-                    + "<Opt73> [2] 73 | 73 and tnx for QSO. | Gud DX 73\n"
+                    + "<Opt73> [2] 73 | 73 and tnx for QSO. | Gud DX 73 | 73 c u down the log | 73 later | Good DX 73\n"
                     + "<LongQSOText> <YourRST> <MyName> <MyLocation> <Miscellaneous>"
                     +           " <MyRig> <MyWeather> <MyJob> <MyAge> <MyLicense>"
                     + " | <MyLocation> <YourRST> <MyRig> <MyWeather> <Miscellaneous>"
@@ -375,7 +376,7 @@ public class RandomQSO extends RandomSentence
       /* MediumQSO is for 10 WPM to 15 WPM */
                     + "<MediumQSO> <CallSigns>  <MediumQSOText> <MustQRT> <Opt73>  <CallSigns> kn\n"
       /* ShortQSO is for < 10 WPM */
-                    + "<ShortQSO> <CallSigns> <ShortQSOText> <MustQRT> <CallSigns> k\n"
+                    + "<ShortQSO> <CallSigns> <ShortQSOText> <Opt73> <CallSigns> k\n"
      /* RandomDigits returns a 5-character "word" consisting of digits */
                     + "<RandomDigits> <Digits><Digits><Digits><Digits><Digits>\n"
      /* Random2Element returns a 5-character "word" using the 1 and 2-element symbols */
@@ -413,9 +414,7 @@ public class RandomQSO extends RandomSentence
      * Return a random QSO as a string.
      * @return the QSO as a string.
      */
-    public String getQSO(
-            int             wpm
-    )
+    public String getQSO(int wpm)
     {
         /*
          * Populate the sender, receiver, and RST

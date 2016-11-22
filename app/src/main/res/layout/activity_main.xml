@@ -11,7 +11,7 @@
     tools:context="com.cebess.qsocreator.MainActivity">
 
     <TextView
-        android:text="QSO Text:"
+        android:text="QSO Text:          Transmit speed:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -41,5 +41,16 @@
         android:onClick="GenerateClick"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/XmitSpeededitText"
+        android:hint="Positive number between 5 and 50"
+        android:text="5"
+        android:layout_above="@+id/generatedQSOEditText"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_width="40dp" />
 
 </RelativeLayout>
