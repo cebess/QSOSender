@@ -11,7 +11,35 @@
     tools:context="com.cebess.qsocreator.MainActivity">
 
     <TextView
+        android:text="QSO Text:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/generateButton"
+        android:gravity="bottom" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapSentences|textMultiLine|textNoSuggestions"
+        android:text="Generated QSO"
+        android:ems="10"
+        android:id="@+id/generatedQSOEditText"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:singleLine="false"
+        android:scrollHorizontally="false" />
+
+    <Button
+        android:text="Generate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/generateButton"
+        android:onClick="GenerateClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

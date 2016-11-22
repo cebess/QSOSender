@@ -57,12 +57,9 @@ public class RandomQSO extends RandomSentence
                     + "<Collins> 718U-5M | KWM-2\n"
                     + "<Drake> TR-3 | TR-4 | TR-4C | TR-5| TR-7\n"
                     + "<Hallicrafters> SR150 | SR160 | SR400 | SR500 | SR2000\n"
-                    + "<Heathkit> DX60 w/Knight R-100A | HW7 | HW16"
-                    + " | HW32 | HW12A | HW22A | HW101 | SB102 | SB401 & SB 303\n"
-                    + "<Icom> IC=275 | IC=475 | IC=575 | IC7300 | IC726 | IC730"
-                    + " | IC745 | IC=756 | IC7100 | IC7600 | IC7700\n"
-                    + "<Kenwood> TS-480SAT | TS-480HX| TS-590SG | TS-990S | TS-2000"
-                    + " | TR=450 | TR=751 | TR=850 | TR=851\n"
+                    + "<Heathkit> DX60 w/Knight R-100A | HW7 | HW16 | HW32 | HW12A | HW22A | HW101 | SB102 | SB401 & SB 303\n"
+                    + "<Icom> IC275 | IC475 | IC575 | IC7300 | IC726 | IC730 | IC745 | IC=756 | IC7100 | IC7600 | IC7700\n"
+                    + "<Kenwood> TS-480SAT | TS-480HX| TS-590SG | TS-990S | TS-2000 | TR450 | TR751 | TR850 | TR851\n"
                     + "<National> NCX3 | NCX5 | NCL 200\n"
                     + "<Swan> 120 | 140 | 180 | 240 | 350\n"
                     + "<TenTec> 585 | 562 | Delta | Argonaut | Omni\n"
@@ -187,10 +184,14 @@ public class RandomQSO extends RandomSentence
                     + " | Must QRT to check email."
                     + " | Must QRT, weather radio warbling."
                     + " | [5] Must QRT for sked with <Someone>."
-                    + " | Must QRT someone is at the front door."
-                    + " | QRM | QRM? | QRS | QRS? | QSY? | QSK? | QRX? | QTH? | QTR?"
+                    + " | Must QRT <Someone> is at the front door."
+                    + " | QRM I cant make you out of the other signals | QRM? the band is crowded"
+                    + " | QRN I cant pull you out of the noise | QRN? the band is noisy here"
+                    + " | QSB the band is a bit unstable | QSB? band seems to be changing"
+                    + " | QRS pse I cant copy that fast | QRS? I can slow down"
+                    + " | QSY? there is QRM on this freq | QSK? in case I neeed to interupt you | QRX? so we can work again | QTH? | QTR? My clock is broken"
                     + " | What is your QTH?\n"
-                    + "<Someone> my uncle | local net | ARES net | my mom\n"
+                    + "<Someone> my uncle | my brother | my sister | my mom\n"
                     + "<States> Alabama | Alaska | Arizona | Arkansas | California"
                     + " | Colorado | Connecticut | Delaware | Florida | Gaum | Georgia"
                     + " | Hawaii | Idaho | Illinois | Indiana | Iowa | Kansas | Kentucky"
@@ -239,7 +240,7 @@ public class RandomQSO extends RandomSentence
                     + " | Sprechen Sie Deutsch?"
                     + " | What is your job?"
                     + " | Whats your job?"
-                    + " | How is the weather?"
+                    + " | How is the weather there?"
                     + " | Hows the weather?"
                     + " | How is the weather?"
                     + " | Are you using a linear amplifier?"
@@ -284,7 +285,7 @@ public class RandomQSO extends RandomSentence
                     + " | There is a rainbow outside the window."
                     + " | I just saw a bolide. Have you ever worked meteor shower?"
                     + " | Do you know the word copacetic, if so thats excellent."
-                    + " | Are you a ragchewer? Do you know the word garralous?"
+                    + " | Are you a ragchewer? Do you know the definition of the word garralous?"
                     + " | What time zone are you in?"
                     + " | Would you have given Morse a Nobel prize?"
                     + " | Our neighbors have a horse named morse."
@@ -307,22 +308,25 @@ public class RandomQSO extends RandomSentence
                     + " | Age is <1To8><Digits>.\n"
                     + "<1To8> 1 | 2 | 3 | 4 | 5 | 8 | 7 | 8\n"
                     + "<MyLicense> I have a <SenderLicense> license."
-                    + " | I am a <SenderLicense> ham."
-                    + " | I have had a <SenderLicense> for 1 year."
+                    + " | I am a <SenderLicense> license ham."
+                    + " | I have had a <SenderLicense> license for <Digits> year."
                     + " | I have been a <SenderLicense> for <5To9> years."
-                    + " | I have a <SenderLicense> license for 1<Digits> years.\n"
-                    + "<MyTemperature> Temperature here is <Temperature>"
-                    + " | Temperature is <Temperature> |\n"
+                    + " | I have had a <SenderLicense> license for 1<Digits> years.\n"
+                    + "<MyTemperature> Temp here is <Temperature>"
+                    + " | Temp is <Temperature> |\n"
                     + "<MyTemperatureLC> temp here is <Temperature>"
                     + " | temp is <Temperature> |\n"
-                    + "<MyWeather> <WeatherText> = <MyTemperatureLC>."
-                    + " | <MyTemperature> = <WeatherText>."
+                    + "<MyWeather> <WeatherText> <MyTemperatureLC>."
+                    + " | <MyTemperature> <WeatherText>."
                     + " | Temp is <Temperature> degrees here and <WeatherText>."
                     + " | <Weather> here and <Temperature> degrees.\n"
                     + "<WeatherText> <WeatherName> is <Weather>"
-                    + " | <WeatherName> here is <Weather>"
+                    + " | <WeatherName> here is <Weather> <Wind>"
+                    + " | It is <Weather> here <Wind>"
                     + " | It is <Weather> here\n"
                     + "<WeatherName> Weather | WX\n"
+                    + "<Wind> wind is <Digits> from the <Direction>\n"
+                    + "<Direction> North | South | East | West | NNW | SSE | NNE } SSW\n"
                     + "<Temperature> <1To8><Digits> <TempUnits>\n"
                     + "<TempUnits> F | C |\n"
                     + "<CityState> <City>, <States>\n"
@@ -369,7 +373,7 @@ public class RandomQSO extends RandomSentence
                     + " | <YourRST>  <MyRig> <MyName> <MyLocation> <MustQRT>"
                     +   "\n"
       /* LongQSO is for 15 WPM or faster QSO's */
-                    + "<LongQSO> <CallSigns> <LongQSOText> <Opt73>  <CallSigns> kn\n"
+                    + "<LongQSO> <CallSigns> <LongQSOText> <Opt73> <CallSigns> kn\n"
       /* MediumQSO is for 10 WPM to 15 WPM */
                     + "<MediumQSO> <CallSigns>  <MediumQSOText> <Opt73>  <CallSigns> kn\n"
       /* ShortQSO is for < 10 WPM */
@@ -429,7 +433,7 @@ public class RandomQSO extends RandomSentence
         Log.d(MainActivity.ProjectName,"callSign: " + callSign);
         String sender           = expand(callSign);
         Log.d(MainActivity.ProjectName,"sender: " + sender);
-        String receiver = null;
+        String receiver;
         do {
             receiver    = expand("<AnyCallSign>");
         } while (receiver.equals(sender));
@@ -446,7 +450,7 @@ public class RandomQSO extends RandomSentence
         catch (Exception e) {
             Log.e(MainActivity.ProjectName,"Can't compile QSO: " + e.toString());
         }
-        String result           = "";
+        String result;
         if (wpm < 10) {
             result              = expand("<ShortQSO>");
         }

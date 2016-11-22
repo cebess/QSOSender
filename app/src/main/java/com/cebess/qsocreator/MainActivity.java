@@ -9,19 +9,27 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String ProjectName = "com.cebess.qsocreator";
-    public static Boolean DEBUG = true;
+    public static final String ProjectName = "com.cebess.qsocreator";
+    public static Boolean DEBUG = false;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
+    // Declare the User Interface elements
+    EditText generatedQSOEditText;
+    Button generateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +37,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RandomQSO myQSO;
 
+        // Define the graphic elements
+        generatedQSOEditText = (EditText)findViewById(R.id.generatedQSOEditText);
+        generateButton = (Button)findViewById(R.id.generateButton);
+
+        //install listeners
+        generateButton.setOnClickListener(btnConnectListener);
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         try {
             myQSO = new RandomQSO();
             String QSOString = myQSO.getQSO(15);
-            Log.d(MainActivity.ProjectName,"QSO string: " + QSOString);
+            generatedQSOEditText.setText(QSOString);
 
         } catch (IOException e) {
             Log.e(MainActivity.ProjectName,"IO exception: " + e.getMessage());
@@ -46,6 +61,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    private OnClickListener btnConnectListener = new OnClickListener() {
+        public void onClick(View v){
+            try {
+                RandomQSO myQSO = new RandomQSO();
+                String QSOString = myQSO.getQSO(15);
+                generatedQSOEditText.setText(QSOString);
+
+            } catch (IOException e) {
+                Log.e(MainActivity.ProjectName,"IO exception: " + e.getMessage());
+                finish();
+            } catch (java.text.ParseException e) {
+                Log.e(MainActivity.ProjectName,"Parse exception: " + e.getMessage());
+                finish();
+            }
+        }
+    };
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
