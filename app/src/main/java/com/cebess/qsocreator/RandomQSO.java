@@ -347,12 +347,12 @@ public class RandomQSO extends RandomSentence
                     + " | <MyLocation> <YourRST> <MyRig> <MyWeather> <Miscellaneous>"
                     +           " <MyName> <MyLicense> <MyAge> <MyJob>"
                     + " | <MyThanks> <YourRST> <MyName> <MyWeather> <MyLocation>"
-                    +           " <MyJob> <MyLicense> <MyRig> <MyAge>"
+                    +           " <MyJob> <MyLicense> <MyRig> <MustQRT> <MyAge>"
                     + " | <MyLocation> <YourRST> <MyRig> <Miscellaneous> <MyName>"
-                    +           " <MyAge> <MyJob> <MyLicense> <MyWeather>"
+                    +           " <MyAge> <MyJob> <MyLicense> <MyWeather> <MustQRT> "
                     + " | <MyThanks> <YourRST> <MyJob> <Miscellaneous> <Miscellaneous>"
                     +           " <MyName> <MyAge> <MyLicense>"
-                    +           " <MyRig> <MyLocation> <MyWeather> <Miscellaneous>"
+                    +           " <MyRig> <MyLocation> <MyWeather> <Miscellaneous> <MustQRT> "
                     + " | <MyLocation> <YourRST> <MyRig> <MyName> <MyJob> <MyAge>"
                     +           " <Miscellaneous> <MyLicense> <MyWeather>"
                     +           " <Miscellaneous>\n"
@@ -371,7 +371,7 @@ public class RandomQSO extends RandomSentence
                     + " | <YourRST>  <MyRig> <MyName> <MyLocation> "
                     +   "\n"
       /* LongQSO is for 15 WPM or faster QSO's */
-                    + "<LongQSO> <CallSigns> <LongQSOText> <MustQRT> <Opt73> <CallSigns> kn\n"
+                    + "<LongQSO> <CallSigns> <LongQSOText> <Opt73> <CallSigns> kn\n"
       /* MediumQSO is for 10 WPM to 15 WPM */
                     + "<MediumQSO> <CallSigns>  <MediumQSOText> <MustQRT> <Opt73>  <CallSigns> kn\n"
       /* ShortQSO is for < 10 WPM */
