@@ -48,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
         //install listeners
         generateButton.setOnClickListener(btnConnectListener);
 
+        generateMessage();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+    }
+    private void generateMessage() {
         try {
             XmitSpeed = Integer.parseInt(XmitSpeededitText.getText().toString());
             if (XmitSpeed < 5 || XmitSpeed > 50) {
@@ -70,30 +74,11 @@ public class MainActivity extends AppCompatActivity {
             Log.e(MainActivity.ProjectName,"Parse exception: " + e.getMessage());
             finish();
         }
-
     }
 
     private OnClickListener btnConnectListener = new OnClickListener() {
         public void onClick(View v){
-            try {
-                XmitSpeed = Integer.parseInt(XmitSpeededitText.getText().toString());
-                if (XmitSpeed < 5 || XmitSpeed > 50) {
-                    //display in short period of time
-                    Toast.makeText(getApplicationContext(), "The transmit speed must be between 5 and 50, inclusive.", Toast.LENGTH_SHORT).show();
-                    XmitSpeed = 5;
-                    XmitSpeededitText.setText("5");
-                } else {
-                    RandomQSO myQSO = new RandomQSO();
-                    String QSOString = myQSO.getQSO(XmitSpeed);
-                    generatedQSOEditText.setText(QSOString);
-                }
-            } catch (IOException e) {
-                Log.e(MainActivity.ProjectName,"IO exception: " + e.getMessage());
-                finish();
-            } catch (java.text.ParseException e) {
-                Log.e(MainActivity.ProjectName,"Parse exception: " + e.getMessage());
-                finish();
-            }
+            generateMessage();
         }
     };
 
